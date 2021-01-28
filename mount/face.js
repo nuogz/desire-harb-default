@@ -1,16 +1,16 @@
 module.exports = async function($) {
-	const { C: { mare }, G, router, multer } = $;
+	const { C: { mare }, G, router, multer, nameLog } = $;
 
 	return async function(rout) {
 		const handle = rout.handle;
 
 		if(!handle) {
-			G.warn('服务', `加载[接口]{${rout.path}}`, '缺少对应的[流程]代码');
+			G.warn(nameLog, `加载[接口]{${rout.path}}`, '缺少对应的[流程]代码');
 
 			return;
 		}
 		else {
-			G.debug('服务', `加载[接口]{${rout.path}}`);
+			G.debug(nameLog, `加载[接口]{${rout.path}}`);
 		}
 
 		if(rout.upload === true) {
@@ -37,7 +37,7 @@ module.exports = async function($) {
 			catch(error) {
 				ctx.status == 500;
 
-				G.error('服务', '运行[接口]', error);
+				G.error(nameLog, '运行[接口]', error);
 			}
 		});
 

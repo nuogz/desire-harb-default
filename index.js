@@ -4,7 +4,7 @@ module.exports = async function($) {
 	const { C: { paths = {}, folds = [], faces = [], mare = {}, wock = false } } = $;
 
 	// 文件上传
-	$.Multer = require('@koa/multer')({ dest: paths.temp || OS.tmpdir() });
+	$.multer = require('@koa/multer')({ dest: paths.temp || OS.tmpdir() });
 
 	if(wock && wock.enabled) {
 		await require('./wock')($, wock);

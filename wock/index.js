@@ -1,7 +1,7 @@
 const UL = require('url');
 
 module.exports = async function($) {
-	const { C, G } = $;
+	const { C, G, serv, nameLog } = $;
 
 	const WebSocket = require('ws');
 
@@ -50,7 +50,7 @@ module.exports = async function($) {
 	}
 
 	// 挂载到http协议下
-	$.serv.on('upgrade', function(request, socket, head) {
+	serv.on('upgrade', function(request, socket, head) {
 		if(UL.parse(request.url).pathname == prefix) {
 			for(const func of handles.upgrade) {
 				if(typeof func == 'function') {
@@ -76,7 +76,7 @@ module.exports = async function($) {
 			}
 			catch(error) {
 				if(error.message.indexOf('CLOSED') == -1) {
-					G.error('服务', `Socket事件{${type}}`, error);
+					G.error(nameLog, `Socket事件{${type}}`, error);
 				}
 			}
 		};
