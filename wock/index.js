@@ -1,4 +1,4 @@
-const UL = require('url');
+const PA = require('pa').posix;
 
 module.exports = async function($) {
 	const { C, G, serv, nameLog } = $;
@@ -24,7 +24,7 @@ module.exports = async function($) {
 		},
 	});
 
-	const prefix = UL.resolve(C.prefix || '/', C.wock.prefix || '/');
+	const prefix = PA.join('/', C.wock.path || '/');
 	const ping = C.wock.ping !== false;
 
 	// 各时机函数
@@ -51,7 +51,7 @@ module.exports = async function($) {
 
 	// 挂载到http协议下
 	serv.on('upgrade', function(request, socket, head) {
-		if(UL.parse(request.url).pathname == prefix) {
+		if(new URL(request.url).pathname == prefix) {
 			for(const func of handles.upgrade) {
 				if(typeof func == 'function') {
 					func(request, socket, head);

@@ -6,6 +6,7 @@ module.exports = async function($) {
 	// 文件上传
 	$.multer = require('@koa/multer')({ dest: paths.temp || OS.tmpdir() });
 
+	// 加载Wock
 	if(wock && wock.enabled) {
 		await require('./wock')($, wock);
 	}

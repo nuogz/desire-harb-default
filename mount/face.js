@@ -1,13 +1,15 @@
 module.exports = async function($) {
 	const { C: { mare }, G, router, multer, nameLog } = $;
+	const PA = require('path').posix;
 
 	return async function(rout) {
-		const handle = rout.handle;
+		const { handle, path } = rout;
 
 		if(!handle) {
-			G.warn(nameLog, `加载[接口]{${rout.path}}`, '缺少对应的[流程]代码');
-
-			return;
+			return G.warn(nameLog, `加载[接口]{${rout.path}}`, '缺少对应的[流程]代码, 已跳过');
+		}
+		else if(!path) {
+			return G.warn(nameLog, `加载[接口]{${rout.path}}`, '缺少对应的[路由], 已跳过');
 		}
 		else {
 			G.debug(nameLog, `加载[接口]{${rout.path}}`);
@@ -26,7 +28,7 @@ module.exports = async function($) {
 		}
 
 		// 主函数
-		router[rout.method](rout.path, async function(ctx, next) {
+		router[rout.method](PA.join('/', rout.path), async function(ctx, next) {
 			ctx.rout = rout;
 
 			await next();

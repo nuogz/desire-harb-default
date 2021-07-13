@@ -1,21 +1,21 @@
 module.exports = async function($, wockInfo = {}) {
-	let { G, wockMan } = $;
+	const { G, wockMan, nameLog, C: { wock: { mare } } } = $;
 
 	return async function(rout) {
-		let func = rout.func;
+		const handle = rout.handle;
 
-		if(!func) {
-			G.warn(`加载 [Wock接口], ${rout.id ? `ID: {${rout.id}}` : ''}, 路径: {${rout.path}}, 错误: 缺少对应的[流程]代码`);
+		if(!handle) {
+			G.warn(nameLog, `加载[Wock接口]{${rout.path}}`, '缺少对应的[流程]代码');
 
 			return;
 		}
 		else {
-			G.trace(`加载 [Wock接口], ${rout.id ? `ID: {${rout.id}}` : ''}, 路径: {${rout.path}}`);
+			G.debug(nameLog, `加载[Wock接口]{${rout.path}}`);
 		}
 
 		let funcArr = [
 			...(wockInfo.before || []),
-			func,
+			handle,
 			...(wockInfo.after || [])
 		];
 
