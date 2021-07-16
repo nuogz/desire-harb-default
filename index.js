@@ -13,7 +13,7 @@ async function initHTTPMares($) {
 
 	for(const initerMare_ of mare?.before ?? []) {
 		try {
-			let initerMare;
+			let initerMare = initerMare_;
 
 			if(typeof initerMare_ == 'string') {
 				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
@@ -27,7 +27,7 @@ async function initHTTPMares($) {
 	}
 	for(const initerMare_ of mare?.after ?? []) {
 		try {
-			let initerMare;
+			let initerMare = initerMare_;
 
 			if(typeof initerMare_ == 'string') {
 				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
@@ -54,7 +54,7 @@ async function initWockMares($) {
 
 	for(const initerMare_ of wock?.mare?.before ?? []) {
 		try {
-			let initerMare;
+			let initerMare = initerMare_;
 
 			if(typeof initerMare_ == 'string') {
 				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
@@ -68,7 +68,7 @@ async function initWockMares($) {
 	}
 	for(const initerMare_ of wock?.mare?.after ?? []) {
 		try {
-			let initerMare;
+			let initerMare = initerMare_;
 
 			if(typeof initerMare_ == 'string') {
 				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
@@ -82,7 +82,7 @@ async function initWockMares($) {
 	}
 	for(const initerMare_ of wock?.mare?.upgrade ?? []) {
 		try {
-			let initerMare;
+			let initerMare = initerMare_;
 
 			if(typeof initerMare_ == 'string') {
 				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
@@ -96,7 +96,7 @@ async function initWockMares($) {
 	}
 	for(const initerMare_ of wock?.mare?.close ?? []) {
 		try {
-			let initerMare;
+			let initerMare = initerMare_;
 
 			if(typeof initerMare_ == 'string') {
 				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
@@ -114,7 +114,7 @@ async function initWockMares($) {
 
 /**
  * #### 服务器系统默认港湾（渴望）
- * @version 4.5.3-2021.07.16.02
+ * @version 4.5.4-2021.07.16.03
  */
 async function DesireDefaultHarb($) {
 	const { C: { faces, folds, wock } } = $;
