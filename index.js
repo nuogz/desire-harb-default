@@ -1,3 +1,7 @@
+import { posix } from 'path';
+
+import KoaRouter from 'koa-router';
+
 import Wocker from './lib/Wock.js';
 import initMounterFold from './lib/mounter/http-fold.js';
 import initMounterFace from './lib/mounter/http-face.js';
@@ -114,10 +118,13 @@ async function initWockMares($) {
 
 /**
  * #### 服务器系统默认港湾（渴望）
- * @version 4.5.4-2021.07.16.03
+ * @version 4.6.0-2021.07.26.01
  */
 async function DesireDefaultHarb($) {
-	const { C: { faces, folds, wock } } = $;
+	const { C: { facePrefix, faces, folds, wock }, koa } = $;
+
+	const router = $.router = KoaRouter({ prefix: posix.join('/', facePrefix ?? '/') });
+	const methodsRouter = router.methods.map(m => m.toLowerCase());
 
 	// 挂载文件资源
 	const mountFoldHTTP = await initMounterFold($);
@@ -128,7 +135,7 @@ async function DesireDefaultHarb($) {
 
 
 	// 是否启用Wock
-	const isWock = wock && !wock.disable;
+	const useWock = wock && !wock.disable;
 
 
 	// 挂载HTTP接口
@@ -136,25 +143,33 @@ async function DesireDefaultHarb($) {
 	const mountFaceHTTP = await initMounterFace($);
 
 	for(const rout of faces) {
-		if(!isWock || rout.wock !== 'only') {
-			await mountFaceHTTP(rout, maresHTTPBefore, maresHTTPAfter);
+		const methodsHTTP = rout?.method.split('.').map(m => m.toLowerCase()).filter(m => methodsRouter.includes(m));
+
+		for(const method of methodsHTTP) {
+			await mountFaceHTTP(method, rout, maresHTTPBefore, maresHTTPAfter);
 		}
 	}
 
 
 	// 挂载Wock接口
-	if(isWock) {
+	if(useWock) {
 		const [maresWockBefore, maresWockAfter, maresWockUpgrade, maresWockClose] = await initWockMares($);
 
 		$.W = new Wocker($, maresWockUpgrade, maresWockClose);
 
 		const mountFaceWock = await initMounterFaceWock($);
+
 		for(const rout of faces) {
-			if(rout.wock) {
+			const isWockRout = rout?.method.split('.').map(m => m.toLowerCase()).find(m => m == 'wock');
+
+			if(isWockRout) {
 				await mountFaceWock(rout, maresWockBefore, maresWockAfter);
 			}
 		}
 	}
+
+	// 加载路由
+	koa.use(router.routes());
 }
 
 export default DesireDefaultHarb;

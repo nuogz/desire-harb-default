@@ -1,6 +1,6 @@
 {
 	"name": "@nuogz/desire-harb-default",
-	"version": "4.5.4",
+	"version": "4.6.0",
 	"description": "A simple harb for desire, also as the default harb of desire",
 	"author": "Nuogz",
 	"license": "LGPL-3.0-or-later",
@@ -10,13 +10,14 @@
 		"node": ">=14"
 	},
 	"devDependencies": {
-		"eslint": "^7.30.0"
+		"eslint": "^7.31.0"
 	},
 	"dependencies": {
 		"@koa/multer": "^3.0.0",
 		"axios": "^0.21.1",
 		"co-body": "^6.1.0",
 		"koa-mount": "^4.0.0",
+		"koa-router": "^10.0.0",
 		"koa-static": "^5.0.0",
 		"multer": "^1.4.2",
 		"ws": "^7.5.3"
