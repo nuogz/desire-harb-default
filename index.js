@@ -26,7 +26,7 @@ async function initHTTPMares($) {
 			maresBefore.push(await initerMare($));
 		}
 		catch(error) {
-			logWarn('加载[接口前置中间件]', error);
+			logWarn('加载~[接口前置中间件]', error);
 		}
 	}
 	for(const initerMare_ of mare?.after ?? []) {
@@ -40,7 +40,7 @@ async function initHTTPMares($) {
 			maresAfter.push(await initerMare($));
 		}
 		catch(error) {
-			logWarn('加载[接口后置中间件]', error);
+			logWarn('加载~[接口后置中间件]', error);
 		}
 	}
 
@@ -67,7 +67,7 @@ async function initWockMares($) {
 			mareskBefore.push(await initerMare($));
 		}
 		catch(error) {
-			logWarn('加载[接口前置中间件]', error);
+			logWarn('加载~[接口前置中间件]', error);
 		}
 	}
 	for(const initerMare_ of wock?.mare?.after ?? []) {
@@ -81,7 +81,7 @@ async function initWockMares($) {
 			maresAfter.push(await initerMare($));
 		}
 		catch(error) {
-			logWarn('加载[接口后置中间件]', error);
+			logWarn('加载~[接口后置中间件]', error);
 		}
 	}
 	for(const initerMare_ of wock?.mare?.upgrade ?? []) {
@@ -95,7 +95,7 @@ async function initWockMares($) {
 			maresUpgrade.push(await initerMare($));
 		}
 		catch(error) {
-			logWarn('加载[接口后置中间件]', error);
+			logWarn('加载~[接口后置中间件]', error);
 		}
 	}
 	for(const initerMare_ of wock?.mare?.close ?? []) {
@@ -109,7 +109,7 @@ async function initWockMares($) {
 			maresClose.push(await initerMare($));
 		}
 		catch(error) {
-			logWarn('加载[接口后置中间件]', error);
+			logWarn('加载~[接口后置中间件]', error);
 		}
 	}
 
@@ -118,7 +118,7 @@ async function initWockMares($) {
 
 /**
  * #### 服务器系统默认港湾（渴望）
- * @version 4.6.2-2021.07.27.02
+ * @version 4.6.4-2021.08.26.01
  */
 async function DesireDefaultHarb($) {
 	const { C: { facePrefix, faces, folds, wock }, koa } = $;
