@@ -117,8 +117,8 @@ async function initWockMares($) {
 }
 
 /**
- * #### 服务器系统默认港湾（渴望）
- * @version 4.7.0-2021.09.16.01
+ * #### 服务器系统默认接口（渴望）
+ * @version 4.8.0-2021.11.09.01
  */
 async function DesireDefaultHarb($) {
 	const { C: { facePrefix, faces, folds, wock }, koa } = $;
