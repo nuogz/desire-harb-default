@@ -1,5 +1,3 @@
-import { posix } from 'path';
-
 import KoaRouter from 'koa-router';
 
 import Wocker from './lib/Wock.js';
@@ -118,13 +116,13 @@ async function initWockMares($) {
 
 /**
  * #### 服务器系统默认接口（渴望）
- * @version 4.8.0-2021.11.09.01
+ * @version 4.8.1-2021.11.24.01
  */
-async function DesireDefaultHarb($) {
-	const { C: { facePrefix, faces, folds, wock }, koa } = $;
+async function DesireDefaultHarb($_) {
+	const $ = $_;
 
-	const router = $.router = KoaRouter({ prefix: posix.join('/', facePrefix ?? '/') });
-	const methodsRouter = router.methods.map(m => m.toLowerCase());
+	const { C: { facePrefix, faces = [], folds = [], wock }, koa } = $;
+
 
 	// 挂载文件资源
 	const mountFoldHTTP = await initMounterFold($);
@@ -134,11 +132,10 @@ async function DesireDefaultHarb($) {
 	}
 
 
-	// 是否启用Wock
-	const useWock = wock && !wock.disable;
-
-
 	// 挂载HTTP接口
+	const router = $.router = KoaRouter();
+	const methodsRouter = router.methods.map(m => m.toLowerCase());
+
 	const [maresHTTPBefore, maresHTTPAfter] = await initHTTPMares($);
 	const mountFaceHTTP = await initMounterFace($);
 
@@ -146,13 +143,13 @@ async function DesireDefaultHarb($) {
 		const methodsHTTP = rout?.method.split('.').map(m => m.toLowerCase()).filter(m => methodsRouter.includes(m));
 
 		for(const method of methodsHTTP) {
-			await mountFaceHTTP(method, rout, maresHTTPBefore, maresHTTPAfter);
+			await mountFaceHTTP(method, rout, maresHTTPBefore, maresHTTPAfter, facePrefix);
 		}
 	}
 
 
 	// 挂载Wock接口
-	if(useWock) {
+	if(wock && !wock.disable) {
 		const [maresWockBefore, maresWockAfter, maresWockUpgrade, maresWockClose] = await initWockMares($);
 
 		$.W = new Wocker($, maresWockUpgrade, maresWockClose);
@@ -167,6 +164,7 @@ async function DesireDefaultHarb($) {
 			}
 		}
 	}
+
 
 	// 加载路由
 	koa.use(router.routes());
