@@ -117,7 +117,7 @@ async function initWockMares($) {
 
 /**
  * #### 服务器系统默认接口（渴望）
- * @version 4.10.0-2022.05.11.01
+ * @version 4.10.1-2022.05.11.02
  */
 export default async function DesireDefaultHarb($_) {
 	const $ = $_;
