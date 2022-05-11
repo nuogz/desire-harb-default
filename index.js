@@ -6,6 +6,7 @@ import initMounterFace from './lib/mounter/http-face.js';
 import initMounterFaceWock from './lib/mounter/wock-face.js';
 
 
+
 /** 加载中间件 */
 async function initHTTPMares($) {
 	const { C: { mare }, logWarn } = $;
@@ -116,9 +117,9 @@ async function initWockMares($) {
 
 /**
  * #### 服务器系统默认接口（渴望）
- * @version 4.9.6-2022.03.29.01
+ * @version 4.10.0-2022.05.11.01
  */
-async function DesireDefaultHarb($_) {
+export default async function DesireDefaultHarb($_) {
 	const $ = $_;
 
 	const { C: { facePrefix, faces = [], folds = [], wock }, koa } = $;
@@ -169,5 +170,3 @@ async function DesireDefaultHarb($_) {
 	// 加载路由
 	koa.use(router.routes());
 }
-
-export default DesireDefaultHarb;
