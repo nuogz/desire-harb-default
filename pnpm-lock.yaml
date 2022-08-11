@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@koa/multer': ^3.0.0
-  '@nuogz/i18n': ^1.0.2
+  '@nuogz/i18n': ^1.1.0
   axios: ^0.27.2
   co-body: ^6.1.0
   eslint: ^8.21.0
@@ -14,7 +14,7 @@ specifiers:
 
 dependencies:
   '@koa/multer': 3.0.0_multer@1.4.5-lts.1
-  '@nuogz/i18n': 1.0.2
+  '@nuogz/i18n': 1.1.0
   axios: 0.27.2
   co-body: 6.1.0
   koa-mount: 4.0.0
@@ -101,8 +101,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@nuogz/i18n/1.0.2:
-    resolution: {integrity: sha512-m+n7NKyKMyU87CuHavR0gwDQRExUcqg6JM9d96yNDCZaZ6T3PZ+76FgW1Tz1mZG9Dx49bm4mLNRUZ+TnSR594w==}
+  /@nuogz/i18n/1.1.0:
+    resolution: {integrity: sha512-pOQ59nf0U6jFk70rVFuLvjA1khXl5DQd84lxMmtglM9+pIkfH9PxdBaMF6dq9/6iKkeh6/e3aZBpSSxlw+E7Ug==}
     engines: {node: '>=14.18.1'}
     dependencies:
       i18next: 21.9.0
