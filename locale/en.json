@@ -1,0 +1,43 @@
+{
+	"translation": {
+		"http": {
+			"initMare": {
+				"before": "init HTTP Face Before Mare",
+				"after": "init HTTP Face After Mare"
+			},
+			"face": {
+				"init": "init HTTP Face {{-route}}",
+				"init2": "init HTTP Face {{method}} {{-route}}",
+				"exec": "execute HTTP Face {{-route}}",
+				"skipInit": {
+					"missRoute": "miss route, skiped",
+					"missHandle": "miss executable handle, skiped",
+					"missMethod": "miss method, skiped"
+				}
+			},
+			"folder": {
+				"init": "init HTTP Fold {{-route}}, path {{-path}}"
+			}
+		},
+		"wock": {
+			"initMare": {
+				"before": "init Wock Face Before Mare",
+				"after": "init Wock Face After Mare",
+				"upgrade": "init Wock Upgrade Mare",
+				"close": "init Wock Connection Close Mare"
+			},
+			"face": {
+				"init": "init Wock Face {{-route}}",
+				"exec": "execute Wock Face {{-route}}",
+				"skipInit": {
+					"missRoute": "miss route, skiped",
+					"missHandle": "miss executable handle, skiped"
+				}
+			},
+			"handleClose": "code {{code}}, reason {{reason}}",
+			"castEvent": "cast Wock Event {{type}}",
+			"closeConnection": "close Wock Connection",
+			"heartbeatTimeout": "heartbeat timeout"
+		}
+	}
+}

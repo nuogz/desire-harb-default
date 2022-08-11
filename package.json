@@ -1,25 +1,35 @@
 {
 	"name": "@nuogz/desire-harb-default",
-	"version": "4.10.5",
-	"description": "A simple harb for desire, also as the default harb of desire",
+	"version": "5.0.0",
+	"description": "the simple default harb of desire",
 	"author": "Nuogz",
 	"license": "LGPL-3.0-or-later",
-	"main": "index.js",
+	"main": "./index.js",
 	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "github:nuogz/desire-harb-default"
+	},
+	"files": [
+		"index.js",
+		"lib/**",
+		"locale/**"
+	],
 	"engines": {
 		"node": ">=14.18.1"
 	},
 	"devDependencies": {
-		"eslint": "^8.19.0"
+		"eslint": "^8.21.0"
 	},
 	"dependencies": {
 		"@koa/multer": "^3.0.0",
+		"@nuogz/i18n": "^1.0.2",
 		"axios": "^0.27.2",
 		"co-body": "^6.1.0",
 		"koa-mount": "^4.0.0",
-		"koa-router": "^10.1.1",
+		"koa-router": "^12.0.0",
 		"koa-static": "^5.0.0",
 		"multer": "1.4.5-lts.1",
-		"ws": "^8.8.0"
+		"ws": "^8.8.1"
 	}
 }

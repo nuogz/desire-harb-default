@@ -1,0 +1,43 @@
+{
+	"translation": {
+		"http": {
+			"initMare": {
+				"before": "init ~[HTTP Face Before Mare]",
+				"after": "init ~[HTTP Face After Mare]"
+			},
+			"face": {
+				"init": "init ~[HTTP Face] {{-route,hadesValue}}",
+				"init2": "init ~[HTTP Face] {{method,hadesValue}} {{-route,hadesValue}}",
+				"exec": "execute ~[HTTP Face] {{-route,hadesValue}}",
+				"skipInit": {
+					"missRoute": "miss ~[route], skiped",
+					"missHandle": "miss executable ~[handle], skiped",
+					"missMethod": "miss ~[method], skiped"
+				}
+			},
+			"folder": {
+				"init": "init ~[HTTP Fold] {{-route,hadesValue}}, path {{-path,hadesValue}}"
+			}
+		},
+		"wock": {
+			"initMare": {
+				"before": "init ~[Wock Face Before Mare]",
+				"after": "init ~[Wock Face After Mare]",
+				"upgrade": "init ~[Wock Upgrade Mare]",
+				"close": "init ~[Wock Connection Close Mare]"
+			},
+			"face": {
+				"init": "init ~[Wock Face] {{-route,hadesValue}}",
+				"exec": "execute ~[Wock Face] {{-route,hadesValue}}",
+				"skipInit": {
+					"missRoute": "miss ~[route], skiped",
+					"missHandle": "miss executable ~[handle], skiped"
+				}
+			},
+			"handleClose": "~[code] {{code,hadesValue}}, ~[reason] {{reason,hadesValue}}",
+			"castEvent": "cast ~[Wock Event] {{type,hadesValue}}",
+			"closeConnection": "close ~[Wock Connection]",
+			"heartbeatTimeout": "heartbeat timeout"
+		}
+	}
+}

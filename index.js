@@ -1,131 +1,66 @@
 import KoaRouter from 'koa-router';
 
+import { TT } from './lib/i18n.js';
+
 import Wocker from './lib/Wock.js';
+
 import initMounterFold from './lib/mounter/http-fold.js';
 import initMounterFace from './lib/mounter/http-face.js';
 import initMounterFaceWock from './lib/mounter/wock-face.js';
 
 
 
-/** 加载中间件 */
-async function initHTTPMares($) {
-	const { C: { mare }, logWarn } = $;
+const initAllMares = async (initsMare, $, textAction) => {
+	const mares = [];
 
-	const maresBefore = [];
-	const maresAfter = [];
-
-	for(const initerMare_ of mare?.before ?? []) {
+	for(const initMareRaw of initsMare) {
 		try {
-			let initerMare = initerMare_;
+			const initMare = typeof initMareRaw == 'string'
+				? (await import(`./lib/mare/${initMareRaw}.js`)).default
+				: initMareRaw;
 
-			if(typeof initerMare_ == 'string') {
-				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
-			}
 
-			maresBefore.push(await initerMare($));
+			mares.push(await initMare($));
 		}
 		catch(error) {
-			logWarn('加载~[HTTP接口前置中间件]', error);
-		}
-	}
-	for(const initerMare_ of mare?.after ?? []) {
-		try {
-			let initerMare = initerMare_;
-
-			if(typeof initerMare_ == 'string') {
-				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
-			}
-
-			maresAfter.push(await initerMare($));
-		}
-		catch(error) {
-			logWarn('加载~[HTTP接口后置中间件]', error);
+			$.logWarn(textAction, error);
 		}
 	}
 
-	return [maresBefore, maresAfter];
-}
+	return mares;
+};
 
-/** 加载Wock中间件 */
-async function initWockMares($) {
-	const { C: { wock }, logWarn } = $;
 
-	const mareskBefore = [];
-	const maresAfter = [];
-	const maresUpgrade = [];
-	const maresClose = [];
+const initHTTPMares = async $ => {
+	const { C: { mare: configMare }, TH } = $;
 
-	for(const initerMare_ of wock?.mare?.before ?? []) {
-		try {
-			let initerMare = initerMare_;
+	return [
+		await initAllMares(configMare?.before ?? [], $, TH('http.initMare.before')),
+		await initAllMares(configMare?.after ?? [], $, TH('http.initMare.after')),
+	];
+};
 
-			if(typeof initerMare_ == 'string') {
-				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
-			}
+const initWockMares = async $ => {
+	const { C: { wock: configWock }, TH } = $;
+	const configMare = configWock?.mare;
 
-			mareskBefore.push(await initerMare($));
-		}
-		catch(error) {
-			logWarn('加载~[Wock接口前置中间件]', error);
-		}
-	}
-	for(const initerMare_ of wock?.mare?.after ?? []) {
-		try {
-			let initerMare = initerMare_;
 
-			if(typeof initerMare_ == 'string') {
-				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
-			}
+	return [
+		await initAllMares(configMare?.before ?? [], $, TH('wock.initMare.before')),
+		await initAllMares(configMare?.after ?? [], $, TH('wock.initMare.after')),
+		await initAllMares(configMare?.upgrade ?? [], $, TH('wock.initMare.upgrade')),
+		await initAllMares(configMare?.close ?? [], $, TH('wock.initMare.close')),
+	];
+};
 
-			maresAfter.push(await initerMare($));
-		}
-		catch(error) {
-			logWarn('加载~[Wock接口后置中间件]', error);
-		}
-	}
-	for(const initerMare_ of wock?.mare?.upgrade ?? []) {
-		try {
-			let initerMare = initerMare_;
 
-			if(typeof initerMare_ == 'string') {
-				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
-			}
-
-			maresUpgrade.push(await initerMare($));
-		}
-		catch(error) {
-			logWarn('加载~[Wock协议升级中间件]', error);
-		}
-	}
-	for(const initerMare_ of wock?.mare?.close ?? []) {
-		try {
-			let initerMare = initerMare_;
-
-			if(typeof initerMare_ == 'string') {
-				initerMare = (await import(`./lib/mare/${initerMare_}.js`)).default;
-			}
-
-			maresClose.push(await initerMare($));
-		}
-		catch(error) {
-			logWarn('加载~[Wock连接关闭中间件]', error);
-		}
-	}
-
-	return [mareskBefore, maresAfter, maresUpgrade, maresClose];
-}
-
-/**
- * #### 服务器系统默认接口（渴望）
- * @version 4.10.5-2022.07.05.01
- */
-export default async function DesireDefaultHarb($_) {
-	const $ = $_;
-
+export default async function DesireDefaultHarb($) {
 	const { C: { facePrefix, faces = [], folds = [], wock }, koa } = $;
 
+	$.TH = TT($.locale);
 
-	// 挂载文件资源
+
+	// mount folders
 	const mountFoldHTTP = await initMounterFold($);
 
 	for(const rout of folds) {
@@ -133,7 +68,7 @@ export default async function DesireDefaultHarb($_) {
 	}
 
 
-	// 挂载HTTP接口
+	// mount HTTP interfaces
 	const router = $.router = KoaRouter();
 	const methodsRouter = router.methods.map(m => m.toLowerCase());
 
@@ -149,7 +84,7 @@ export default async function DesireDefaultHarb($_) {
 	}
 
 
-	// 挂载Wock接口
+	// mount Wock interfaces
 	if(wock && !wock.disable) {
 		const [maresWockBefore, maresWockAfter, maresWockUpgrade, maresWockClose] = await initWockMares($);
 
@@ -167,6 +102,6 @@ export default async function DesireDefaultHarb($_) {
 	}
 
 
-	// 加载路由
+	// apply routes
 	koa.use(router.routes());
 }
