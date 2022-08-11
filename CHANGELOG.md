@@ -1,7 +1,12 @@
 # CHANGELOG
 
+## v5.0.2 - 2022.08.11 11
+* change `route.method` splitter to `;` from `.`
+* bump `@nuogz/i18n` to `v1.2.0` and fixed related `lib/i18n.js`
+
+
 ## v5.0.1 - 2022.08.11 11
-* update `@nuogz/i18n` to `v1.1.0` and update related `lib/i18n.js`
+* bump `@nuogz/i18n` to `v1.1.0` and fixed related `lib/i18n.js`
 
 
 ## v5.0.0 - 2022.08.11 11

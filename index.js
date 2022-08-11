@@ -76,7 +76,7 @@ export default async function DesireDefaultHarb($) {
 	const mountFaceHTTP = await initMounterFace($);
 
 	for(const rout of faces) {
-		const methodsHTTP = rout?.method.split('.').map(m => m.toLowerCase()).filter(m => methodsRouter.includes(m));
+		const methodsHTTP = rout?.method.split(';').map(m => m.toLowerCase()).filter(m => methodsRouter.includes(m));
 
 		for(const method of methodsHTTP) {
 			await mountFaceHTTP(method, rout, maresHTTPBefore, maresHTTPAfter, facePrefix);
@@ -93,7 +93,7 @@ export default async function DesireDefaultHarb($) {
 		const mountFaceWock = await initMounterFaceWock($);
 
 		for(const rout of faces) {
-			const isWockRout = rout?.method.split('.').map(m => m.toLowerCase()).find(m => m == 'wock');
+			const isWockRout = rout?.method.split(';').map(m => m.toLowerCase()).find(m => m == 'wock');
 
 			if(isWockRout) {
 				await mountFaceWock(rout, maresWockBefore, maresWockAfter);
