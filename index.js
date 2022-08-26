@@ -2,7 +2,7 @@ import KoaRouter from 'koa-router';
 
 import { TT } from './lib/i18n.js';
 
-import Wocker from './lib/Wock.js';
+import Wockman from '@nuogz/wock';
 
 import initMounterFold from './lib/mounter/http-fold.js';
 import initMounterFace from './lib/mounter/http-face.js';
@@ -88,7 +88,11 @@ export default async function DesireDefaultHarb($) {
 	if(wock && !wock.disable) {
 		const [maresWockBefore, maresWockAfter, maresWockUpgrade, maresWockClose] = await initWockMares($);
 
-		$.W = new Wocker($, maresWockUpgrade, maresWockClose);
+		$.W = new Wockman($.server, wock.route, {
+			logger: $.C.logger,
+			maresWockUpgrade,
+			maresWockClose
+		});
 
 		const mountFaceWock = await initMounterFaceWock($);
 

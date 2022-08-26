@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v5.1.0 - 2022.08.26 17
+* use `@nuogz/wock` instead built-in websocket library
+* bump up dependencies
+* improve `package.json`
+
+
 ## v5.0.2 - 2022.08.11 11
 * change `route.method` splitter to `;` from `.`
 * bump `@nuogz/i18n` to `v1.2.0` and fixed related `lib/i18n.js`
