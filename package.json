@@ -1,7 +1,7 @@
 {
 	"name": "@nuogz/desire-harb-default",
-	"version": "5.1.0",
-	"description": "the simple default harb of desire",
+	"version": "5.2.0",
+	"description": "default harb of desire",
 	"author": "Nuogz",
 	"license": "LGPL-3.0-or-later",
 	"repository": {
@@ -32,6 +32,6 @@
 		"ws": "^8.8.1"
 	},
 	"devDependencies": {
-		"eslint": "^8.22.0"
+		"eslint": "^8.23.1"
 	}
 }

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v5.2.0 - 2022.09.14 09
+* `parseRaw` support parse `multipart/form-data`
+* bump up dependencies
+
+
 ## v5.1.0 - 2022.08.26 17
 * use `@nuogz/wock` instead built-in websocket library
 * bump up dependencies
