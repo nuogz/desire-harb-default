@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v5.3.0 - 2022.10.11 11
+* add `W` as the fourth parameter of the `Wock Face` handle
+* bump up dependencies
+
+
 ## v5.2.0 - 2022.09.14 09
 * `parseRaw` support parse `multipart/form-data`
 * bump up dependencies
