@@ -2,7 +2,7 @@ import KoaRouter from 'koa-router';
 
 import { TT } from './lib/i18n.js';
 
-import Wockman from '@nuogz/wock';
+import Wockman from '@nuogz/wock-server';
 
 import initMounterFold from './lib/mounter/http-fold.js';
 import initMounterFace from './lib/mounter/http-face.js';

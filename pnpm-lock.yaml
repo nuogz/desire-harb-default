@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@koa/multer': ^3.0.0
   '@nuogz/i18n': ^1.2.1
-  '@nuogz/wock': ^1.1.1
+  '@nuogz/wock-server': ^2.0.0
   axios: ^0.27.2
   co-body: ^6.1.0
   eslint: ^8.25.0
@@ -16,7 +16,7 @@ specifiers:
 dependencies:
   '@koa/multer': 3.0.0_multer@1.4.5-lts.1
   '@nuogz/i18n': 1.2.1
-  '@nuogz/wock': 1.1.1
+  '@nuogz/wock-server': 2.0.0
   axios: 0.27.2
   co-body: 6.1.0
   koa-mount: 4.0.0
@@ -129,8 +129,8 @@ packages:
       '@nuogz/json-bigint': 1.0.0
     dev: false
 
-  /@nuogz/wock/1.1.1:
-    resolution: {integrity: sha512-FbhBR62umGPm1hiveGsUSZB4f9d6aKGPwMUhhIzdZB/arQLhKsMQJWUi9SLSjFtYvQ7gSmry/UjgKM+OrA63hA==}
+  /@nuogz/wock-server/2.0.0:
+    resolution: {integrity: sha512-jKmrv1uc/r5NTj4tCueAPoODCUBShi1b1LwkJKF74giBfX7T9kNdDjN4tfhTCj2iXaJ/55YydOsi6u5dzec0pg==}
     engines: {node: '>=14.18.1'}
     dependencies:
       '@nuogz/class-inject-leveled-log': 1.0.0
@@ -832,7 +832,7 @@ packages:
     dev: true
 
   /media-typer/0.3.0:
-    resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
+    resolution: {integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=}
     engines: {node: '>= 0.6'}
     dev: false
 

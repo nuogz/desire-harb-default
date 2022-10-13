@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v5.3.1 - 2022.10.13 09
+* use `@nuogz/wock-server` instead `@nuogz/wock@1`
+* bump up dependencies
+* tweak locale
+
+
 ## v5.3.0 - 2022.10.11 11
 * add `W` as the fourth parameter of the `Wock Face` handle
 * bump up dependencies

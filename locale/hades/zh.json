@@ -2,8 +2,8 @@
 	"translation": {
 		"http": {
 			"initMare": {
-				"before": "加载~[HTTP接口前置中间件]",
-				"after": "加载~[HTTP接口后置中间件]"
+				"before": "加载 ~[HTTP接口前置中间件]",
+				"after": "加载 ~[HTTP接口后置中间件]"
 			},
 			"face": {
 				"init": "加载 ~[HTTP接口]{{-route,hadesValue}}",
@@ -21,10 +21,10 @@
 		},
 		"wock": {
 			"initMare": {
-				"before": "加载~[Wock接口前置中间件]",
-				"after": "加载~[Wock接口后置中间件]",
-				"upgrade": "加载~[Wock协议升级中间件]",
-				"close": "加载~[Wock连接关闭中间件]"
+				"before": "加载 ~[Wock接口前置中间件]",
+				"after": "加载 ~[Wock接口后置中间件]",
+				"upgrade": "加载 ~[Wock协议升级中间件]",
+				"close": "加载 ~[Wock连接关闭中间件]"
 			},
 			"face": {
 				"init": "加载 ~[Wock接口]{{-route,hadesValue}}",
