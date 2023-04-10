@@ -1,5 +1,17 @@
 # CHANGELOG
 
+# v6.0.0 - 2023.04.10 16
+* (break) `@nuogz/desire-harb-default` has been renamed to `@nuogz/desire-harbour`
+* (break) refactor config
+* (new) HTTP face supports export multiple methods in the `method` variable
+* reorganize all code. now `Harbour` is more independent from `Desire`
+* add `d.ts`
+* bump up `@nuogz/i18n` to `v3.1.0` and renew related code
+* renew locales
+* bump up dependencies
+
+
+
 ## v5.3.1 - 2022.10.13 09
 * use `@nuogz/wock-server` instead `@nuogz/wock@1`
 * bump up dependencies
