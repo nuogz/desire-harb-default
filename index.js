@@ -175,6 +175,8 @@ export default class DesireHarbour {
 	/** @param {DesireWithHarbour} desire */
 	async init(desire) {
 		const { koa } = desire;
+
+		/** @type {HarbourOption} */
 		const { facePrefix = '/', faces = [], folds = [], wock } = desire.optionHarbour;
 
 
@@ -195,6 +197,7 @@ export default class DesireHarbour {
 
 		for(const face of faces) {
 			const methods = face?.method.split(',').map(m => m.toLowerCase()).filter(m => methodsRouter.includes(m));
+			if(!methods.length) { continue; }
 
 			await mountHTTPFace(methods, face, maresHTTPBefore, maresHTTPAfter, facePrefix, desire);
 		}
@@ -207,7 +210,7 @@ export default class DesireHarbour {
 
 
 			desire.wockman = new Wockman(desire.server, wock.route, {
-				logger: desire.C.logger,
+				logger: desire.optionRaw.logger,
 				maresWockUpgrade,
 				maresWockClose
 			});
@@ -218,7 +221,7 @@ export default class DesireHarbour {
 				if(!hasMethodWock) { continue; }
 
 
-				await mountWockFace(face, maresWockBefore, maresWockAfter);
+				await mountWockFace(face, maresWockBefore, maresWockAfter, desire);
 			}
 		}
 

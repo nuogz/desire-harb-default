@@ -1,5 +1,18 @@
 # CHANGELOG
 
+# v6.1.0 - 2023.07.11 11
+* (new) mare `parseRaw` supports skipping self with face option `parseRaw`
+* (new )face options will be passed to `wock-face` handle now
+* fix face option `toSuccess` cannot be used properly with mare `toSuccess`
+* fix face option `toSuccess` cannot be used properly with mare `toSuccess`
+* fix the wock cast to throw an error when `wock-face` handle does not return data array
+* fix wrongly referencing data when creating Wockman
+* bump up dependencies
+	* update `typescript` to `v5.x`, and renew jsdoc
+* use eslint flat config, and related config udpate
+	* use `eslint.config.js` instead `eslintrc.cjs`
+
+
 # v6.0.0 - 2023.04.10 16
 * (break) `@nuogz/desire-harb-default` has been renamed to `@nuogz/desire-harbour`
 * (break) refactor config
