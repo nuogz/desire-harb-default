@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# v6.1.1 - 2023.07.11 11
+* bump up peer dependencies
+
+
 # v6.1.0 - 2023.07.11 11
 * (new) mare `parseRaw` supports skipping self with face option `parseRaw`
 * (new )face options will be passed to `wock-face` handle now
