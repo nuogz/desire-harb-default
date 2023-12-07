@@ -1,6 +1,6 @@
 export default class DesireHarbour {
     /** @param {DesireWithHarbour} desire */
-    init(desire: DesireWithHarbour): Promise<DesireHarbour>;
+    init(desire: DesireWithHarbour): Promise<this>;
 }
 export type Mare = KoaRouter.Middleware;
 /**
@@ -20,19 +20,19 @@ export type WockMareOption = {
     /**
      * An array for before-mare initer, or a string for one built-in mare.
      */
-    before?: MareInitOption;
+    before?: MareInitOption | undefined;
     /**
      * An array for after-mare initer, or a string for one built-in mare.
      */
-    after?: MareInitOption;
+    after?: MareInitOption | undefined;
     /**
      * An array for upgrade-mare initer, or a string for one built-in mare.
      */
-    upgrade?: MareInitOption;
+    upgrade?: MareInitOption | undefined;
     /**
      * An array for close-mare initer, or a string for one built-in mare.
      */
-    close?: MareInitOption;
+    close?: MareInitOption | undefined;
 };
 /**
  * Wock option
@@ -43,19 +43,19 @@ export type WockOption = {
     /**
      * Indicates whether disabled. `undefined` or `true` for disabled；`false` for enabled.
      */
-    disable?: boolean;
+    disable?: boolean | undefined;
     /**
      * Route under WebSocket. **ATTENTION** This option is fully independent that will not concat with `{HarbourOption.facePrefix}`
      */
-    route?: string;
+    route?: string | undefined;
     /**
      * Indicates whether send `ping` event after websocket connected. `undefined` or `false` for not send；`true` for will send
      */
-    ping?: boolean;
+    ping?: boolean | undefined;
     /**
      * Mare(Middleware) option for Wock.
      */
-    mare?: WockMareOption;
+    mare?: WockMareOption | undefined;
 };
 /**
  * Mare(Middleware) option map
@@ -66,11 +66,11 @@ export type MareOptionMap = {
     /**
      * An array for before-mare initer, or a string for one built-in mare.
      */
-    before?: MareInitOption;
+    before?: MareInitOption | undefined;
     /**
      * An array for after-mare initer, or a string for one built-in mare.
      */
-    after?: MareInitOption;
+    after?: MareInitOption | undefined;
 };
 /**
  * Folder mapping option
@@ -103,34 +103,34 @@ export type FaceOption = {
      * Indicates whether file upload is enabled. `undefined` or `true` for enabled；`false` for disabled
      */
     upload: boolean;
-    destUpload?: string;
+    destUpload?: string | undefined;
 };
 export type HarbourOption = {
     /**
      * prefix for interface
      */
-    facePrefix?: string;
+    facePrefix?: string | undefined;
     /**
      * the options of interfaces
      */
-    faces?: FaceOption[];
+    faces?: FaceOption[] | undefined;
     /**
      * the options of folder mappings
      */
-    folds?: FolderOption[];
+    folds?: FolderOption[] | undefined;
     /**
      * the options of mare
      */
-    mare?: MareOptionMap;
+    mare?: MareOptionMap | undefined;
     /**
      * Wock option
      */
-    wock?: WockOption;
+    wock?: WockOption | undefined;
     /**
      * module `multer` option
      */
-    multer?: import('@koa/multer').Options;
-    destUpload?: string;
+    multer?: import("@koa/multer").Options | undefined;
+    destUpload?: string | undefined;
 };
 export type Desire = import('@nuogz/desire').default;
 export type DesireExtend = {
@@ -140,5 +140,5 @@ export type DesireExtend = {
     multer: import('@koa/multer').Instance;
 };
 export type DesireWithHarbour = DesireExtend & Desire;
-import KoaRouter from "@koa/router";
-import Wockman from "@nuogz/wock-server";
+import KoaRouter from '@koa/router';
+import Wockman from '@nuogz/wock-server';
