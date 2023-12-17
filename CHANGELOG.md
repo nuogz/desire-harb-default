@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# v6.2.1 - 2023.12.17 16
+* bump up dependencies
+
+
 # v6.2.0 - 2023.12.07 10
 * tweak enviroment
 * bump up dependencies

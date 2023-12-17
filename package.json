@@ -1,7 +1,7 @@
 {
 	"name": "@nuogz/desire-harbour",
-	"version": "6.2.0",
-	"description": "default harbour of desire",
+	"version": "6.2.1",
+	"description": "Default harbour of desire",
 	"author": "DanoR",
 	"license": "LGPL-3.0-or-later",
 	"repository": {
@@ -31,7 +31,7 @@
 	"dependencies": {
 		"@koa/multer": "^3.0.2",
 		"@koa/router": "^12.0.1",
-		"@nuogz/desire": "^6.1.0",
+		"@nuogz/desire": "^6.1.1",
 		"@nuogz/i18n": "^3.3.1",
 		"@nuogz/wock-server": "^3.2.3",
 		"axios": "^1.6.2",
@@ -46,12 +46,12 @@
 		"@types/koa__cors": "^4.0.3",
 		"@types/koa__multer": "^2.0.7",
 		"@types/koa__router": "^12.0.4",
-		"@types/node": "^20.10.3",
+		"@types/node": "^20.10.4",
 		"@types/ws": "^8.5.10",
-		"eslint": "^8.55.0",
+		"eslint": "^8.56.0",
 		"typescript": "^5.3.3"
 	},
 	"peerDependencies": {
-		"@nuogz/desire": "^6.1.0"
+		"@nuogz/desire": "^6.1.1"
 	}
 }
