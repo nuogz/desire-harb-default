@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# v6.2.2 - 2024.04.18 09
+* bump up dependencies
+
+
 # v6.2.1 - 2023.12.17 16
 * bump up dependencies
 
