@@ -87,7 +87,7 @@ export type FolderOption = {
     /**
      * `koa-static` option
      */
-    option: import('koa-static').Options;
+    option: import("koa-static").Options;
 };
 /**
  * Face option
@@ -132,12 +132,12 @@ export type HarbourOption = {
     multer?: import("@koa/multer").Options | undefined;
     destUpload?: string | undefined;
 };
-export type Desire = import('@nuogz/desire').default;
+export type Desire = import("@nuogz/desire").default;
 export type DesireExtend = {
     optionHarbour: HarbourOption;
     router: KoaRouter;
     wockman: Wockman;
-    multer: import('@koa/multer').Instance;
+    multer: import("@koa/multer").Instance;
 };
 export type DesireWithHarbour = DesireExtend & Desire;
 import KoaRouter from '@koa/router';

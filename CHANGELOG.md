@@ -1,5 +1,12 @@
 # CHANGELOG
 
+# v6.3.0 - 2024.06.22 11
+* update `@nuogz/desire` to `v6.2.0`, and renew codes
+* remove `@koa/multer` and include its code due to lack of maintenance package
+* tweak develop enviroment
+* bump up dependencies
+
+
 # v6.2.2 - 2024.04.18 09
 * bump up dependencies
 
