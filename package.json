@@ -1,6 +1,6 @@
 {
 	"name": "@nuogz/desire-harbour",
-	"version": "6.3.0",
+	"version": "6.5.1",
 	"description": "Default harbour of desire",
 	"author": "DanoR",
 	"license": "LGPL-3.0-or-later",
@@ -22,40 +22,41 @@
 		"index.js",
 		"lib/**",
 		"locale/**",
-		"**/*.d.ts"
+		"types/**"
 	],
-	"typings": "./index.d.ts",
+	"typings": "./types/index.d.ts",
 	"scripts": {
-		"emitDeclaration": "tsc ./index.js --declaration --emitDeclarationOnly --moduleResolution nodenext --module nodenext --target esnext --experimentalDecorators --strict --allowJs --jsx preserve"
+		"declare": "tsc",
+		"postdeclare": "copy /Y bases.d.ts types"
 	},
 	"dependencies": {
-		"@koa/router": "^12.0.1",
-		"@nuogz/desire": "^6.2.0",
-		"@nuogz/i18n": "^3.3.1",
-		"@nuogz/wock-server": "^3.2.3",
-		"axios": "^1.7.2",
+		"@koa/router": "^13.0.0",
+		"@nuogz/desire": "^6.5.1",
+		"@nuogz/i18n": "^3.7.4",
+		"@nuogz/wock-server": "^3.3.1",
+		"axios": "^1.7.5",
 		"co-body": "^6.2.0",
 		"koa-mount": "^4.0.0",
 		"koa-static": "^5.0.0",
 		"multer": "1.4.5-lts.1"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.5.0",
-		"@stylistic/eslint-plugin-js": "^2.2.2",
+		"@eslint/js": "^9.9.1",
+		"@stylistic/eslint-plugin-js": "^2.6.4",
 		"@types/koa-compress": "^4.0.6",
 		"@types/koa-favicon": "^2.1.3",
 		"@types/koa-static": "^4.0.4",
-		"@types/koa__cors": "^4.0.3",
+		"@types/koa__cors": "^5.0.0",
 		"@types/koa__multer": "^2.0.7",
 		"@types/koa__router": "^12.0.4",
-		"@types/multer": "^1.4.11",
-		"@types/node": "^20.14.7",
-		"@types/ws": "^8.5.10",
-		"eslint": "^9.5.0",
-		"globals": "^15.6.0",
-		"typescript": "^5.5.2"
+		"@types/multer": "^1.4.12",
+		"@types/node": "^20.16.1",
+		"@types/ws": "^8.5.12",
+		"eslint": "^9.9.1",
+		"globals": "^15.9.0",
+		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
-		"@nuogz/desire": "^6.2.0"
+		"@nuogz/desire": "^6.5.1"
 	}
 }

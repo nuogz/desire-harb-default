@@ -1,5 +1,13 @@
 # CHANGELOG
 
+# v6.5.1 - 2024.08.27 09
+* docs: renew types
+* docs: update locale
+* deps: bump up dependencies
+	* deps: bump up `@koa/router` to `v13.x`
+* chore: improve develop environments
+
+
 # v6.3.0 - 2024.06.22 11
 * update `@nuogz/desire` to `v6.2.0`, and renew codes
 * remove `@koa/multer` and include its code due to lack of maintenance package

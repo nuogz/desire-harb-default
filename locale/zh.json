@@ -1,62 +1,37 @@
 {
 	"http": {
-		"initMare": {
-			"before@proto": "加载 HTTP接口前置中间件",
-			"before@hades": "加载 ~[HTTP接口前置中间件]",
-			"after@proto": "加载 HTTP接口后置中间件",
-			"after@hades": "加载 ~[HTTP接口后置中间件]"
+		"init-mare": {
+			"before": "加载 ~[HTTP接口前置中间件]",
+			"after": "加载 ~[HTTP接口后置中间件]"
 		},
 		"face": {
-			"init@proto": "加载 HTTP接口：{{-route}}",
-			"init@hades": "加载 ~[HTTP接口]{{-route,value@hades}}",
-			"init2@proto": "加载 HTTP接口：{{methods}} {{-route}}",
-			"init2@hades": "加载 ~[HTTP接口]{{methods,value@hades}}{{-route,value@hades}}",
-			"exec@proto": "执行 HTTP接口：{{-route}}",
-			"exec@hades": "执行 ~[HTTP接口]{{-route,value@hades}}",
-			"skipInit": {
-				"missRoute@proto": "缺少 路由，已跳过",
-				"missRoute@hades": "缺少~[路由]，已跳过",
-				"missHandle@proto": "缺少 可执行的处理函数，已跳过",
-				"missHandle@hades": "缺少可执行的~[处理函数]，已跳过",
-				"missMethod@proto": "缺少 请求方法，已跳过",
-				"missMethod@hades": "缺少~[请求方法]，已跳过"
+			"init": "加载 ~[HTTP接口]{{-route,value}}",
+			"init2": "加载 ~[HTTP接口]{{methods,value}}{{-route,value}}",
+			"exec": "执行 ~[HTTP接口]{{-route,value}}",
+			"skip-init": {
+				"unknown-route": "未知的~[路由]，已跳过",
+				"unknown-handle": "未知的可执行~[处理函数]，已跳过",
+				"unknown-method": "未知的~[请求方法]，已跳过"
 			}
 		},
 		"folder": {
-			"init@proto": "加载 HTTP文件夹映射：{{-route}}，文件位置：{{-location}}",
-			"init@hades": "加载 ~[HTTP文件夹映射]{{-route,value@hades}}，文件位置{{-location,value@hades}}"
+			"init": "加载 ~[HTTP文件夹映射]{{-route,value}}，文件位置{{-location,value}}"
 		}
 	},
 	"wock": {
-		"initMare": {
-			"before@proto": "加载 Wock接口前置中间件",
-			"before@hades": "加载 ~[Wock接口前置中间件]",
-			"after@proto": "加载 Wock接口后置中间件",
-			"after@hades": "加载 ~[Wock接口后置中间件]",
-			"upgrade@proto": "加载 Wock协议升级中间件",
-			"upgrade@hades": "加载 ~[Wock协议升级中间件]",
-			"close@proto": "加载 Wock连接关闭中间件",
-			"close@hades": "加载 ~[Wock连接关闭中间件]"
+		"init-mare": {
+			"before": "加载 ~[Wock接口前置中间件]",
+			"after": "加载 ~[Wock接口后置中间件]",
+			"upgrade": "加载 ~[Wock协议升级中间件]",
+			"close": "加载 ~[Wock连接关闭中间件]"
 		},
 		"face": {
-			"init@proto": "加载 Wock接口：{{-route}}",
-			"init@hades": "加载 ~[Wock接口]{{-route,value@hades}}",
-			"exec@proto": "执行 Wock接口：{{-route}}",
-			"exec@hades": "执行 ~[Wock接口]{{-route,value@hades}}",
-			"skipInit": {
-				"missRoute@proto": "缺少 路由，已跳过",
-				"missRoute@hades": "缺少~[路由]，已跳过",
-				"missHandle@proto": "缺少 可执行的处理函数，已跳过",
-				"missHandle@hades": "缺少可执行的~[处理函数]，已跳过"
+			"init": "加载 ~[Wock接口]{{-route,value}}",
+			"exec": "执行 ~[Wock接口]{{-route,value}}",
+			"skip-init": {
+				"unknown-route": "未知的~[路由]，已跳过",
+				"unknown-handle": "未知的可执行~[处理函数]，已跳过"
 			}
-		},
-		"handleClose@proto": "代码：{{code}}，原因：{{reason}}",
-		"handleClose@hades": "~[代码]{{code,value@hades}}，~[原因]{{reason,value@hades}}",
-		"castEvent@proto": "发送 Wock事件：{{type}}",
-		"castEvent@hades": "发送 ~[Wock事件]{{type,value@hades}}",
-		"closeConnection@proto": "关闭 Wock连接",
-		"closeConnection@hades": "关闭 ~[Wock连接]",
-		"heartbeatTimeout@proto": "心跳超时",
-		"heartbeatTimeout@hades": "~[心跳]超时"
+		}
 	}
 }

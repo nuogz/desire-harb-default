@@ -1,62 +1,37 @@
 {
 	"http": {
-		"initMare": {
-			"before@proto": "init HTTP face-before Mare",
-			"before@hades": "init ~[HTTP face-before Mare]",
-			"after@proto": "init HTTP face-after Mare",
-			"after@hades": "init ~[HTTP face-after Mare]"
+		"init-mare": {
+			"before": "init ~[HTTP face-before Mare]",
+			"after": "init ~[HTTP face-after Mare]"
 		},
 		"face": {
-			"init@proto": "init HTTP Face: {{-route}}",
-			"init@hades": "init ~[HTTP Face] {{-route,value@hades}}",
-			"init2@proto": "init HTTP Face: {{method}} {{-route}}",
-			"init2@hades": "init ~[HTTP Face] {{method,value@hades}} {{-route,value@hades}}",
-			"exec@proto": "execute HTTP Face: {{-route}}",
-			"exec@hades": "execute ~[HTTP Face] {{-route,value@hades}}",
-			"skipInit": {
-				"missRoute@proto": "miss route, skipped",
-				"missRoute@hades": "miss ~[route], skipped",
-				"missHandle@proto": "miss executable handle, skipped",
-				"missHandle@hades": "miss executable ~[handle], skipped",
-				"missMethod@proto": "miss method, skipped",
-				"missMethod@hades": "miss ~[method], skipped"
+			"init": "init ~[HTTP Face] {{-route,value}}",
+			"init2": "init ~[HTTP Face] {{method,value}} {{-route,value}}",
+			"exec": "execute ~[HTTP Face] {{-route,value}}",
+			"skip-init": {
+				"unknown-route": "unknown ~[route], skipped",
+				"unknown-handle": "unknown executable ~[handle], skipped",
+				"unknown-method": "unknown ~[method], skipped"
 			}
 		},
 		"folder": {
-			"init@proto": "init HTTP Folder Mapping: {{-route}}, location: {{-location}}",
-			"init@hades": "init ~[HTTP Folder Mapping] {{-route,value@hades}}, location {{-location,value@hades}}"
+			"init": "init ~[HTTP Folder Mapping] {{-route,value}}, location {{-location,value}}"
 		}
 	},
 	"wock": {
-		"initMare": {
-			"before@proto": "init Wock face-before Mare",
-			"before@hades": "init ~[Wock face-before Mare]",
-			"after@proto": "init Wock face-after Mare",
-			"after@hades": "init ~[Wock face-after Mare]",
-			"upgrade@proto": "init Wock upgrade Mare",
-			"upgrade@hades": "init ~[Wock upgrade Mare]",
-			"close@proto": "init Wock connection-close Mare",
-			"close@hades": "init ~[Wock connection-close Mare]"
+		"init-mare": {
+			"before": "init ~[Wock face-before Mare]",
+			"after": "init ~[Wock face-after Mare]",
+			"upgrade": "init ~[Wock upgrade Mare]",
+			"close": "init ~[Wock connection-close Mare]"
 		},
 		"face": {
-			"init@proto": "init Wock Face: {{-route}}",
-			"init@hades": "init ~[Wock Face] {{-route,value@hades}}",
-			"exec@proto": "execute Wock Face: {{-route}}",
-			"exec@hades": "execute ~[Wock Face] {{-route,value@hades}}",
-			"skipInit": {
-				"missRoute@proto": "miss route, skipped",
-				"missRoute@hades": "miss ~[route], skipped",
-				"missHandle@proto": "miss executable handle, skipped",
-				"missHandle@hades": "miss executable ~[handle], skipped"
+			"init": "init ~[Wock Face] {{-route,value}}",
+			"exec": "execute ~[Wock Face] {{-route,value}}",
+			"skip-init": {
+				"unknown-route": "unknown ~[route], skipped",
+				"unknown-handle": "unknown executable ~[handle], skipped"
 			}
-		},
-		"handleClose@proto": "code: {{code}}, reason: {{reason}}",
-		"handleClose@hades": "~[code] {{code,value@hades}}, ~[reason] {{reason,value@hades}}",
-		"castEvent@proto": "cast Wock Event: {{type}}",
-		"castEvent@hades": "cast ~[Wock Event] {{type,value@hades}}",
-		"closeConnection@proto": "close Wock Connection",
-		"closeConnection@hades": "close ~[Wock Connection]",
-		"heartbeatTimeout@proto": "heartbeat timeout",
-		"heartbeatTimeout@hades": "~[heartbeat] timeout"
+		}
 	}
 }
