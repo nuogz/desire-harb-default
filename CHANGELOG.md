@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# v6.5.2 - 2024.08.27 14
+* fix: error import `@nuogz/i18n`
+
+
 # v6.5.1 - 2024.08.27 09
 * docs: renew types
 * docs: update locale
