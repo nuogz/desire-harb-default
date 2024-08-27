@@ -1,7 +1,11 @@
 # CHANGELOG
 
+# v6.5.3 - 2024.08.27 14
+* fix: fix error usage of `@koa/router`
+
+
 # v6.5.2 - 2024.08.27 14
-* fix: error import `@nuogz/i18n`
+* fix: fix error import of `@nuogz/i18n`
 
 
 # v6.5.1 - 2024.08.27 09

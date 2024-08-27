@@ -109,7 +109,7 @@ export default class DesireHarbour {
 
 
 		// HTTP interface
-		desire.router = KoaRouter();
+		desire.router = new KoaRouter();
 		const methodsRouter = desire.router.methods.map(m => m.toLowerCase());
 
 		const [maresHTTPBefore, maresHTTPAfter] = await initHTTPMares(desire);
